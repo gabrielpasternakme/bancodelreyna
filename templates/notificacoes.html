@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h2>notificacoes geradas</h2>
+
+{% if notificacoes %}
+    {% for n in notificacoes %}
+        <div class="card">
+            <p>
+                Olá, {{ n.nome }}, tudo bem? Identificamos que o pagamento referente ao período atual encontra-se em atraso há {{ n.dias }} dias. pedimos, por gentileza, que verifique a situação quando possível. caso o pagamento já tenha sido realizado, por favor, desconsidere esta mensagem. Permanecemos à disposição para qualquer esclarecimento. Atenciosamente.
+            </p>
+
+            <a target="_blank" href="https://wa.me/{{ n.telefone }}">
+                abrir whatsapp
+            </a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>nenhuma notificacao hoje.</p>
+{% endif %}
+
+{% endblock %}

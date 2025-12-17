@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h2>usuarios ativos</h2>
+
+{% if usuarios %}
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>nome</th>
+        <th>email</th>
+        <th>telefone</th>
+        <th>status</th>
+        <th>ultimo pagamento</th>
+        <th>ações</th>
+    </tr>
+
+    {% for u in usuarios %}
+    <tr>
+  <td>{{ u[0] }}</td>
+  <td>{{ u[1] }}</td>
+  <td>{{ u[2] }}</td>
+  <td class="status {{ u[3] }}">
+    {{ u[3] }}
+  </td>
+
+  <td>{{ u[4] }}</td>
+  <td>{{ u[5] }}</td>
+  <td>
+    <a href="/editar/{{ u[0] }}">editar</a> |
+    <a href="/deletar/{{ u[0] }}" onclick="return confirm('Deseja deletar?')">deletar</a>
+    <a href="/pagar/{{ u[0] }}">pagar</a>
+  </td>
+</tr>
+
+    {% endfor %}
+</table>
+{% else %}
+<p>nenhum usuario cadastrado.</p>
+{% endif %}
+
+{% endblock %}

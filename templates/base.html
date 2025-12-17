@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>sistema de notificacao</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>sistema de notificacao</h1>
+
+        <nav>
+            <a href="/">usuarios</a>
+            <a href="/adicionar">adicionar</a>
+            <a href="/rotina">rotina diaria</a>
+        </nav>
+
+        <hr>
+
+        {% block conteudo %}{% endblock %}
+    </div>
+
+</body>
+</html>
