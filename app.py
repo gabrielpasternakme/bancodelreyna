@@ -2,10 +2,52 @@ from flask import Flask, render_template, request, redirect
 from database import *
 from rotina import rotina_diaria
 from datetime import date
+from flask import send_file
+import sqlite3
+import os
+import tempfile
+
 
 app = Flask(__name__)
 from database import criar_tabela
 criar_tabela()
+
+@app.route("/backup")
+def backup():
+    db_path = "usuarios.db"  # confere se o nome é esse
+
+    if not os.path.exists(db_path):
+        return "banco nao encontrado", 404
+
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM usuarios")
+    dados = cursor.fetchall()
+
+    colunas = [desc[0] for desc in cursor.description]
+
+    conn.close()
+
+    # cria arquivo temporario
+    temp = tempfile.NamedTemporaryFile(delete=False, suffix=".txt", mode="w", encoding="utf-8")
+
+    temp.write(" | ".join(colunas) + "\n")
+    temp.write("-" * 80 + "\n")
+
+    for linha in dados:
+        temp.write(" | ".join(map(str, linha)) + "\n")
+
+    temp.close()
+
+    return send_file(
+        temp.name,
+        as_attachment=True,
+        download_name="backup_usuarios.txt"
+    )
+
+
+
 
 @app.route("/")
 def home():
@@ -82,4 +124,7 @@ def registrar_pagamento(id):
 
 if __name__ == "__main__":
     app.run()
+
+
+
 
