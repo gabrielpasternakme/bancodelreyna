@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 {% block conteudo %}
 
-<h2>editar usuario</h2>
+<h2>EDITAR CLIENTE</h2>
 
 <form method="post">
-  <p><b>nome:</b> {{ u[1] }}</p>
+  <p><b>NOME: </b> {{ u[1] }}</p>
 
-  <label>email</label><br>
+  <label>EMAIL</label><br>
   <input name="email" value="{{ u[2] }}"><br><br>
 
-  <label>telefone</label><br>
+  <label>TELEFONE</label><br>
   <input name="telefone" value="{{ u[3] }}"><br><br>
 
-  <label>ultimo pagamento</label><br>
+  <label>ULTIMO PAGAMENTO</label><br>
   <input type="date" name="ultimo_pagamento" value="{{ u[4] }}"><br><br>
 
-  <button type="submit">salvar</button>
+  <button type="submit">SALVAR</button>
 </form>
 
 {% endblock %}
