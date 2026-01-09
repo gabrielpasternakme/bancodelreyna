@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block conteudo %}
 
-<h2>notificacoes geradas</h2>
+<h2>NOTIFICAÇÕES GERADAS</h2>
 
 {% if notificacoes %}
     {% for n in notificacoes %}
@@ -11,12 +11,13 @@
             </p>
 
             <a target="_blank" href="https://wa.me/{{ n.telefone }}">
-                abrir whatsapp
+                ABRIR WHATSAPP.
             </a>
         </div>
     {% endfor %}
 {% else %}
-    <p>nenhuma notificacao hoje.</p>
+    <p>NENHUMA NOTIFICAÇÃO HOJE.</p>
 {% endif %}
 
 {% endblock %}
+
