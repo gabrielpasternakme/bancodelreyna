@@ -1,22 +1,36 @@
 {% extends "base.html" %}
 {% block conteudo %}
 
-<h2>adicionar usuario</h2>
+<div class="card">
+  <h2>ADICIONAR CLIENTE</h2>
 
-<form method="post">
-    <label>nome</label><br>
-    <input name="nome" required><br><br>
+  <form method="post">
+    <div class="form-group">
+      <label>NOME</label>
+      <input type="text" name="nome" required>
+    </div>
 
-    <label>email</label><br>
-    <input name="email" type="email" required><br><br>
+    <div class="form-group">
+      <label>EMAIL</label>
+      <input type="email" name="email" required>
+    </div>
 
-    <label>telefone</label><br>
-    <input name="telefone" required><br><br>
+    <div class="form-group">
+      <label>TELEFONE</label>
+      <input type="text" name="telefone" required>
+    </div>
 
-    <label>ultimo pagamento</label><br>
-    <input name="ultimo_pagamento" type="date" required><br><br>
+    <div class="form-group">
+      <label>ULTIMO PAGAMENTO</label>
+      <input type="date" name="ultimo_pagamento" required>
+    </div>
 
-    <button type="submit">salvar</button>
-</form>
+    <button class="btn">SALVAR</button>
+  </form>
+
+  {% if msg %}
+    <div class="msg">{{ msg }}</div>
+  {% endif %}
+</div>
 
 {% endblock %}
